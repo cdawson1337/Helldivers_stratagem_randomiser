@@ -70,11 +70,19 @@ def stratagem4():
 
 
 def main():
+    stratagem_list = []
     strat1 = stratagem1()
     strat2 = stratagem2()
     strat3 = stratagem3()
     strat4 = stratagem4()
-    print(f"Your four stratagems are: {strat1}, {strat2}, {strat3}, {strat4}.")
+    if strat2 == strat1:
+        stratagem2()
+    if strat3 == strat1 or strat3 == strat2:
+        stratagem3()
+    if strat4 == strat1 or strat4 == strat2 or strat4 == strat3:
+        stratagem4()
+    else:
+        print(f"Your four stratagems are: {strat1}, {strat2}, {strat3}, {strat4}.")
 
 
 main()
