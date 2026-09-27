@@ -21,72 +21,26 @@ STRATAGEMS = ["Orbital Precision Strike", "Orbital Gatling Barrage", "Orbital Ga
 
 
 
-def stratagem1():
-    while True:
-        random_strat = random.choice(STRATAGEMS)
-        print(f"Your first stratagem is: {random_strat}")
-        choice = input("Do you have this stratagem unlocked? ")
-        if choice.lower() == "yes":
-            return random_strat
-        if choice.lower() == "no":
-            continue
-        else:
-            print("Please answer yes or no.")
-
-def stratagem2():
-    while True:
-        random_strat = random.choice(STRATAGEMS)
-        print(f"Your second stratagem is: {random_strat}")
-        choice = input("Do you have this stratagem unlocked? ")
-        if choice.lower() == "yes":
-            return random_strat
-        if choice.lower() == "no":
-            continue
-        else:
-            print("Please answer yes or no.")
-
-def stratagem3():
-    while True:
-        random_strat = random.choice(STRATAGEMS)
-        print(f"Your third stratagem is: {random_strat}")
-        choice = input("Do you have this stratagem unlocked? ")
-        if choice.lower() == "yes":
-            return random_strat
-        if choice.lower() == "no":
-            continue
-        else:
-            print("Please answer yes or no.")
-
-def stratagem4():
-    while True:
-        random_strat = random.choice(STRATAGEMS)
-        print(f"Your fourth stratagem is: {random_strat}")
-        choice = input("Do you have this stratagem unlocked? ")
-        if choice.lower() == "yes":
-            return random_strat
-        if choice.lower() == "no":
-            continue
-        else:
-            print("Please answer yes or no.")
+def stratagem_randomization(STRATAGEMS: list) -> list:
+    random_strats = []
+    for strat in range(4):
+        while True:
+            random_strat = random.choice(STRATAGEMS)
+            if random_strat in random_strats:
+                continue
+            choice = input(f"Do you have {random_strat} unlocked? ")
+            if choice.lower() == "yes":
+                print("Choosing next stratagem...")
+                random_strats.append(random_strat)
+                break
+            if choice.lower() == "no":
+                continue 
+            else:
+                print("Please answer yes or no.")
+    return print(f"Your stratagems are:{random_strats}")
 
 
-
-def main():
-    stratagem_list = []
-    strat1 = stratagem1()
-    strat2 = stratagem2()
-    strat3 = stratagem3()
-    strat4 = stratagem4()
-    if strat2 == strat1:
-        stratagem2()
-    if strat3 == strat1 or strat3 == strat2:
-        stratagem3()
-    if strat4 == strat1 or strat4 == strat2 or strat4 == strat3:
-        stratagem4()
-    else:
-        print(f"Your four stratagems are: {strat1}, {strat2}, {strat3}, {strat4}.")
-
-main()
+stratagem_randomization(STRATAGEMS)
 
 
 
