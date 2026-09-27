@@ -5,7 +5,7 @@
 
 import random
 
-stratagems = ["Orbital Precision Strike", "Orbital Gatling Barrage", "Orbital Gas Strike", "Orbital 120MM HE Barrage", "Orbital Airburst Strike",
+STRATAGEMS = ["Orbital Precision Strike", "Orbital Gatling Barrage", "Orbital Gas Strike", "Orbital 120MM HE Barrage", "Orbital Airburst Strike",
 "Orbital Smoke Strike", "Orbital EMS Strike", "Orbital 380MM HE Barrage", "Orbital Walking Barrage", "Orbital Laser", "Orbital Napalm Barrage",
 "Orbital Railcannon Strike", "Eagle Gas Airstrike", "Eagle Strafing Run", "Eagle Airstrike", "Eagle Cluster Bomb", "Eagle Smoke Strike", "Eagle Napalm Airstrike",
 "Eagle 110MM Rocket Pods", "Eagle 500KG Bomb", "MG-43 Machine Gun", "EAT-17 Expendable Anti-Tank", "M-105 Stalwart", "LAS-98 Laser Cannon", "APW-1 Anti-Material Rifle", "GR-8 Recoilless Rifle",
@@ -19,9 +19,11 @@ stratagems = ["Orbital Precision Strike", "Orbital Gatling Barrage", "Orbital Ga
 "A/GM-17 Gas Mortar Sentry", "MD-6 Anti-Personnel Minefield", "MD-14 Incendiary Mines", "MD-17 Anti-Tank Mines", "FX-12 Shield Generator Relay", "E/MG-101 HMG Emplacement", "E/GL-21 Grenadier Battlement",
 "MD-8 Gas Mines", "E/AT-12 Anti-Tank Emplacement"]
 
+
+
 def stratagem1():
     while True:
-        random_strat = random.choice(stratagems)
+        random_strat = random.choice(STRATAGEMS)
         print(f"Your first stratagem is: {random_strat}")
         choice = input("Do you have this stratagem unlocked? ")
         if choice.lower() == "yes":
@@ -33,7 +35,7 @@ def stratagem1():
 
 def stratagem2():
     while True:
-        random_strat = random.choice(stratagems)
+        random_strat = random.choice(STRATAGEMS)
         print(f"Your second stratagem is: {random_strat}")
         choice = input("Do you have this stratagem unlocked? ")
         if choice.lower() == "yes":
@@ -45,7 +47,7 @@ def stratagem2():
 
 def stratagem3():
     while True:
-        random_strat = random.choice(stratagems)
+        random_strat = random.choice(STRATAGEMS)
         print(f"Your third stratagem is: {random_strat}")
         choice = input("Do you have this stratagem unlocked? ")
         if choice.lower() == "yes":
@@ -57,7 +59,7 @@ def stratagem3():
 
 def stratagem4():
     while True:
-        random_strat = random.choice(stratagems)
+        random_strat = random.choice(STRATAGEMS)
         print(f"Your fourth stratagem is: {random_strat}")
         choice = input("Do you have this stratagem unlocked? ")
         if choice.lower() == "yes":
@@ -84,5 +86,7 @@ def main():
     else:
         print(f"Your four stratagems are: {strat1}, {strat2}, {strat3}, {strat4}.")
 
-
 main()
+
+
+
