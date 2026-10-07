@@ -1,3 +1,4 @@
+'''
 import customtkinter
 
 class CheckboxFrame(customtkinter.CTkScrollableFrame):
@@ -15,6 +16,7 @@ class CheckboxFrame(customtkinter.CTkScrollableFrame):
             checkbox = customtkinter.CTkCheckBox(self, text=value)
             checkbox.grid(row=i+1, column =0, padx=10, pady=(10,0), sticky="w")
             self.checkboxes.append(checkbox)
+            
         
     def get(self):
         checked_checkboxes = []
@@ -22,6 +24,38 @@ class CheckboxFrame(customtkinter.CTkScrollableFrame):
             if checkbox.get() == 1:
                 checked_checkboxes.append(checkbox.cget("text"))
         return checked_checkboxes
+'''
 
+"""
+check_vars = []
 
-   
+        for name in containers:
+            var = ctk.StringVar(value = "")
+            cb = ctk.CTkCheckBox(
+                app,
+                text=name,
+                variable=var,
+                onvalue=name,
+                offvalue=""
+            )
+            cb.pack(anchor="w", padx=20, pady=5)
+            check_vars.append(var)
+    
+    def get_checked():
+        pool = []
+        for var in check_vars:
+            name = var.get()
+            if name != "":
+                pool.extend(containers[name])
+        return pool
+    
+    def randomize():
+        pool = get_checked()
+        picks = random.sample(pool, 4)
+        print(picks)
+
+    def button():
+        button = ctk.CTkButton(app, text="Randomize", command=randomize)
+        button.pack(pady=20)
+"""
+

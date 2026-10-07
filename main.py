@@ -1,50 +1,54 @@
-import customtkinter
+import customtkinter as ctk
 import random
-from checkbox_frame import CheckboxFrame
 
-warbond1 = ["A", "B", "C"]
-warbond2 = ["D", "E", "F"]
-warbond3 = ["G", "H", "I"]
+app = ctk.CTk()
 
+# container name -> list of values it contributes
+containers = {
+    "Chemical Agents": ["TX-41 Sterilizer", "AX/TX-13 Dog Breath"],
+    "Urban Legends": ["SH-51 Directional Shield", "A/FLAM-40 Flame Sentry", "E/AT-12 Anti-Tank Emplacement"],
+    "Servants of Freedom": ["B-100 Portable Hellbomb"],
+    "Borderline Justice": ["LIFT-860 Hover Pack"],
+    "Masters of Ceremony": ["CQC-1 One True Flag"],
+    "Force of Law": ["GL-52 De-Escalator", "AX/ARC-3 K-9"],
+    "Control Group": ["PLAS-45 Epoch", "A/LAS-98 Laser Sentry", "LIFT-182 Warp Pack"],
+    "Dust Devils": ["S-11 Speargun", "EAT-700 Expendable Napalm", "MS-11 Solo Silo"],
+    "Python Commandos": ["AX/FLAM-75 Hot Dog", "CQC-9 Defoliation Tool", "M-1000 Maxigun"],
+    "Redacted Regiment": ["B/MD C4 Pack"], 
+    "Siege Breakers": ["CQC-20 Breaching Hammer", "EAT-411 Leveller", "GL-28 Belt-Fed Grenade Launcher"],
+    "Entrenched Division": ["A/GM-17 Gas Mortar Sentry", "B/FLAM-80 Cremator"], 
+    "EXO Experts": ["MGX-42 Bullet Storm", "EXO-51 Lumberer Exosuit", "EXO-55 Breakthrough Exosuit"], 
+    "Castellan's Creed": ["40-K Meltagun"]
+}
 
-class App(customtkinter.CTk):
-    def __init__(self):
-        super().__init__()
+check_vars = []
 
-        self.title("Helldivers Loadout Challenge")
-        self.geometry("1280x720")
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure((0,1), weight=1)
-        self.configure(fg_color="yellow")
+for name in containers:
+    var = ctk.StringVar(value="")
+    cb = ctk.CTkCheckBox(
+        app,
+        text=name,
+        variable=var,
+        onvalue=name,    # container name when checked
+        offvalue=""
+    )
+    cb.pack(anchor="w", padx=20, pady=5)
+    check_vars.append(var)
 
-        self.checkbox_frame = CheckboxFrame(self, "Warbonds", values=["Warbond1", "Warbond2", "Warbond3"])
-        self.checkbox_frame.grid(row=0, column=0, padx=(0, 10), pady=(10, 0), sticky="nsew")
-        self.checkbox_frame.configure(fg_color="black")
+def get_checked():
+    pool = []
+    for var in check_vars:
+        name = var.get()
+        if name != "":
+            pool.extend(containers[name])   # add every value in the container
+    return pool
 
-        self.button = customtkinter.CTkButton(self, fg_color="black", text="Grab Challenge Loadout", command=self.randomization_button)
-        self.button.grid(row=3, column=0, padx=10, pady=10, sticky="ew", columnspan=2)
+def randomize():
+    pool = get_checked()
+    picks = random.sample(pool, min(4, len(pool)))  # avoids an error if pool < 4
+    print(picks)
 
-    def Add_lists(self):
-        total_stratagems = []
-        if Warbond1.get() == 1:
-            total_stratagems.extend(warbond1)
-        if Warbond2.get() == 1:
-            total_stratagems.extend(warbond2)
-        if Warbond3.get() == 1:
-            total_stratagems.extend(warbond3)
-        return total_stratagems
+button = ctk.CTkButton(app, text="Randomize", command=randomize)
+button.pack(pady=20)
 
-    def randomization_button(self):
-        strat_list = 
-        for strat in range(4):
-            while True:
-                random_strat = random.choice(total_stratagems)
-                if random_strat not in random_strats:
-                    random_strat.append(random_strats)
-                    break
-        return random_strats
-
-    
-if __name__=="__main__":
-    app = App()
-    app.mainloop()
+app.mainloop()
