@@ -44,7 +44,6 @@ def main():
 
 def list_creation():
     list_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,]
-    input_list = []
     final_input = []
     print("""=============================
     Select the Warbonds you own:
@@ -64,17 +63,20 @@ def list_creation():
     13. EXO Experts
     14. Castellan's Creed
     =============================""")
-    for num in range(len(input_list)):
-        input_list = input("select by choosing *number* followed by a comma or '0' for all Warbonds: "). split()
-        if input_list[num] not in list_numbers:
+    input_list = input("select by choosing *number* followed by a comma or '0' for all Warbonds: ")
+    selection = [int(x) for x in input_list.split(",")]
+    for num in selection:
+        if num not in list_numbers:
             raise Exception("Please input only numbers 0-14")
-        if input_list[num] != 0 and input_list[num] in list_numbers:
-            final_input.append(input_list[num])
-        if input_list[num] == 0 and len(input_list) == 1:
-            final_input.append(input_list[num])
-        if input_list[num] == 0 and len(input_list) > 1:
+        if num != 0 and num in list_numbers:
+            final_input.append(num)
+        if num == 0 and len(selection) == 1:
+            final_input.append(num)
+        if num == 0 and len(selection) > 1:
             raise Exception("Please print either 0 or 1-14 seperated by commas")
-    return final_input
+    return final_list
+
+list_creation()
                 
 def combine_lists():
     inputs = list_creation()
