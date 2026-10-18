@@ -74,7 +74,7 @@ def list_creation():
             final_input.append(num)
         if num == 0 and len(selection) > 1:
             raise Exception("Please print either 0 or 1-14 seperated by commas")
-    return final_list
+    return final_input
 
 list_creation()
                 
