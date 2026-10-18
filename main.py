@@ -75,19 +75,44 @@ def list_creation():
         if num == 0 and len(selection) > 1:
             raise Exception("Please print either 0 or 1-14 seperated by commas")
     return final_input
-
-list_creation()
                 
 def combine_lists():
     inputs = list_creation()
     num_to_strat = []
-    if 0 in inputs and len(inputs) == 1:
+    if 0 in inputs:
         num_to_strat = list(WARBONDS.values())
     else:
-        for number in range(len(inputs)):
-            num_to_strat.append(WARBONDS[number+1])
-    strat_list = STRATAGEMS.extend(num_to_strat)
-    return strat_list
+        for num in inputs:
+            if num == 1:
+                num_to_strat.extend(WARBONDS["Chemical Agents"])
+            if num == 2:
+                num_to_strat.extend(WARBONDS["Urban Legends"])
+            if num == 3:
+                num_to_strat.extend(WARBONDS["Servants of Freedom"])
+            if num == 4:
+                num_to_strat.extend(WARBONDS["Borderline Justice"])
+            if num == 5:
+                num_to_strat.extend(WARBONDS["Masters of Ceremony"])
+            if num == 6:
+                num_to_strat.extend(WARBONDS["Force of Law"])
+            if num == 7:
+                num_to_strat.extend(WARBONDS["Control Group"])
+            if num == 8:
+                num_to_strat.extend(WARBONDS["Dust Devils"])
+            if num == 9:
+                num_to_strat.extend(WARBONDS["Python Commandos"])
+            if num == 10:
+                num_to_strat.extend(WARBONDS["Redacted Regiment"])
+            if num == 11:
+                num_to_strat.extend(WARBONDS["Siege Breakers"])
+            if num == 12:
+                num_to_strat.extend(WARBONDS["Entrenched Division"])
+            if num == 13:
+                num_to_strat.extend(WARBONDS["EXO Experts"])
+            if num == 14:
+                num_to_strat.extend(WARBONDS["Castellan's Creed"])
+    num_to_strat.extend(STRATAGEMS)
+    return num_to_strat
 
 def stratagem_randomization():
     final_list = combine_lists()
