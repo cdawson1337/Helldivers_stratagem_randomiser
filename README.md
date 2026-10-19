@@ -10,5 +10,5 @@ I would like to learn more about efficiently using new libraries, and since this
 ## Current Terminid Outbreak!(Bugs)
 I have yet to update the input function where if you type something other than the numbers requested, the function will crash.....so don't do that :)
 
-## for Liberty
+## For Liberty!!
 <img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/34276aa2-335c-4f4e-b8ce-edaf8fe37882" />
